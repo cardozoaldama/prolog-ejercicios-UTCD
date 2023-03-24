@@ -144,8 +144,8 @@ hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X \== Y.
 hermano_de(X,Y) :- madres_de(Z,X), madres_de(Z,Y), X \== Y.
 
 % Hijo: Una persona es hijo de otra si esa persona es el hijo varón o la hija mujer de esa otra persona.
-hijo_de(X,Y) :- padre_de(Y,X), hombre(X).
-hijo_de(X,Y) :- madre_de(Y,X), mujer(X).
+hijo_de(X,Y) :- padres_de(Y,X), hombre(X).
+hijo_de(X,Y) :- madres_de(Y,X), mujer(X).
 
 % Tío: Una persona es tío de otra si esa persona es el hermano de uno de los padres de la otra.
 tio_de(X,Y) :- hermano_de(X,Z), padres_de(Z,Y).
