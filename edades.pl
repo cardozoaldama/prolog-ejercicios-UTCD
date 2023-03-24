@@ -89,87 +89,24 @@ Definir parentesco existente en la Familia de Belén, según el árbol genealóg
 
 % Definición de hechos
 
-% Hombres
-hombre(tomas).
-hombre(marcelo).
-hombre(oscar).
-hombre(martin).
-hombre(esteban).
+% Padres
 
-% Mujeres
-mujer(pilar).
-mujer(amalia).
-mujer(ana).
-mujer(sara).
-mujer(belen).
+padres(tomas, amalia).
+padres(tomas, ana).
+padres(tomas, oscar).
+padres(marcelo, martin).
+padres(marcelo, esteban).
+padres(oscar, sara).
+padres(oscar, belen).
 
-% Tomas y Pilar como padres
-padre_de(tomas, amalia).
-padre_de(tomas, ana).
-padre_de(tomas, oscar).
-madre_de(pilar, amalia).
-madre_de(pilar, ana).
-madre_de(pilar, oscar).
+% Madres
 
-% Parejas
-pareja_de(tomas, pilar).
-pareja_de(amalia, marcelo).
-pareja_de(oscar, andrea).
+madres(pilar, amalia).
+madres(pilar, ana).
+madres(pilar, oscar).
+madres(amalia, martin).
+madres(amalia, esteban).
+madres(andrea, sara).
+madres(andrea, belen).
 
-% Definición de padres
-padres_de(marcelo, esteban).
-padres_de(marcelo, martin).
-padres_de(oscar, sara).
-padres_de(oscar, belen).
-
-% Definición de madres
-madres_de(amalia, esteban).
-madres_de(amalia, martin).
-madres_de(andrea, sara).
-madres_de(andrea, belen).
-
-% Definición de hermanos
-hermano_de(amalia, ana).
-hermano_de(amalia, oscar).
-hermano_de(oscar, amalia).
-hermano_de(oscar, ana).
-hermano_de(ana, amalia).
-hermano_de(ana, oscar).
-
-% DECLARACIÓN DE REGLAS
-
-% Hermano: Dos personas son hermanas si tienen los mismos padres.
-hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X \== Y.
-hermano_de(X,Y) :- madres_de(Z,X), madres_de(Z,Y), X \== Y.
-
-% Hijo: Una persona es hijo de otra si esa persona es el hijo varón o la hija mujer de esa otra persona.
-hijo_de(X,Y) :- padres_de(Y,X) ; madres_de(Y,X).
-hijo_de(X,Y) :- padre_de(Y,X) ; madre_de(Y, X).
-
-% Tío: Una persona es tío de otra si esa persona es el hermano de uno de los padres de la otra.
-tio_de(X,Y) :- hermano_de(X,Z), padres_de(Z,Y).
-tio_de(X,Y) :- hermano_de(X,Z), madres_de(Z,Y).
-
-% Sobrino: Una persona es sobrino de otra si esa persona es hijo de un hermano o hermana de esa otra persona.
-sobrino_de(X, Y) :- tio_de(Y, X).
-/* sobrino_de(X,Y) :- hijo_de(X,Z), hermano_de(Z,Y).
-sobrino_de(X,Y) :- hijo_de(X,Z), hermano_de(Z,Y).*/
-
-% Primo: Una persona es primo de otra si esa persona es hijo de un tío o tía de la otra.
-primo_de(X,_Y) :- hijo_de(X,L), hijo_de(X,N), hermano_de(L, N), L \== N.
-
-% Abuelo: Una persona es abuelo de otra si esa persona es el padre o madre de uno de los padres de la otra.
-abuelo_de(X,Y) :- padres_de(X,Z), padres_de(Z,Y).
-abuelo_de(X,Y) :- padres_de(X,Z), madres_de(Z,Y).
-abuelo_de(X,Y) :- madres_de(X,Z), padres_de(Z,Y).
-abuelo_de(X,Y) :- madres_de(X,Z), madres_de(Z,Y).
-
-% Nieto: Una persona es nieto de otra si esa persona es hijo de uno de los hijos de esa otra persona.
-nieto_de(X,Y) :- hijo_de(Z,Y), hijo_de(X,Z).
-nieto_de(X,Y) :- hijo_de(Z,Y), hijo_de(X,Z).
-
-% Cuñado: Una persona es cuñado de otra si esa persona está casada con el hermano o hermana de la otra.
-cunado_de(X,Y) :- pareja_de(X,Z), hermano_de(Z,Y), hombre(X).
-cunado_de(X,Y) :- pareja_de(X,Z), hermano_de(Z,Y), hombre(X).
-cunado_de(X,Y) :- pareja_de(Z,X), hermano_de(Z,Y), hombre(X).
-cunado_de(X,Y) :- pareja_de(Z,X), hermano_de(Z,Y), hombre(X).
+% Esposos
