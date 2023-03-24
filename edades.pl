@@ -129,7 +129,6 @@ madres_de(andrea, sara).
 madres_de(andrea, belen).
 
 % Definición de hermanos
-
 hermano_de(amalia, ana).
 hermano_de(amalia, oscar).
 hermano_de(oscar, amalia).
@@ -144,10 +143,8 @@ hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X \== Y.
 hermano_de(X,Y) :- madres_de(Z,X), madres_de(Z,Y), X \== Y.
 
 % Hijo: Una persona es hijo de otra si esa persona es el hijo varón o la hija mujer de esa otra persona.
-hijo_de(X,Y) :- padres_de(Y,X), hombre(X).
-hijo_de(X,Y) :- madres_de(Y,X), mujer(X).
-hijo_de(X,Y) :- padre_de(Y,X).
-hijo_de(X,Y) :- madre_de(Y,X).
+hijo_de(X,Y) :- padres_de(Y,X) ; madres_de(Y,X).
+hijo_de(X,Y) :- padre_de(Y,X) ; madre_de(Y, X).
 
 % Tío: Una persona es tío de otra si esa persona es el hermano de uno de los padres de la otra.
 tio_de(X,Y) :- hermano_de(X,Z), padres_de(Z,Y).
@@ -159,8 +156,7 @@ sobrino_de(X, Y) :- tio_de(Y, X).
 sobrino_de(X,Y) :- hijo_de(X,Z), hermano_de(Z,Y).*/
 
 % Primo: Una persona es primo de otra si esa persona es hijo de un tío o tía de la otra.
-primo_de(X,Y) :- tio_de(Z,Y), hijo_de(X,Z).
-primo_de(X,Y) :- tio_de(Z,Y), hijo_de(X,Z).
+primo_de(X,_Y) :- hijo_de(X,L), hijo_de(X,N), hermano_de(L, N), L \== N.
 
 % Abuelo: Una persona es abuelo de otra si esa persona es el padre o madre de uno de los padres de la otra.
 abuelo_de(X,Y) :- padres_de(X,Z), padres_de(Z,Y).
