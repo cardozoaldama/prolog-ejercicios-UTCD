@@ -101,12 +101,6 @@ pareja_de(oscar, andrea).
 
 % Padres e hijos directos.
 
-padres_de(pilar, amalia).
-padres_de(pilar, ana).
-padres_de(pilar, oscar).
-padres_de(tomas, amalia).
-padres_de(tomas, ana).
-padres_de(tomas, oscar).
 padres_de(amalia, martin).
 padres_de(amalia, esteban).
 padres_de(oscar, sara).
@@ -115,6 +109,12 @@ padres_de(marcelo, martin).
 padres_de(marcelo, esteban).
 padres_de(andrea, sara).
 padres_de(andrea, belen).
+hermanos_de(amalia, oscar).
+hermanos_de(amalia, ana).
+hermanos_de(oscar, amalia).
+hermanos_de(oscar, ana).
+hermanos_de(ana, amalia).
+hermanos_de(ana, oscar).
 
 hijo_de(X,Y) :- padres_de(Y,X).
 hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X\==Y.
@@ -123,4 +123,5 @@ sobrino_de(X,Y) :- tio_de(Y,X).
 primo_de(X,Y) :- padres_de(Z,X), padres_de(W,Y), hermano_de(Z,W).
 abuelo_de(X,Y) :- padres_de(X,Z), padres_de(Z,Y).
 nieto_de(X,Y) :- abuelo_de(Y,X).
-cunado_de(X,Y) :- (padres_de(Z,Y), hermano_de(X,Z)) ; (padres_de(Z,X), hermano_de(Y,Z)).
+cunado_de(X,Y) :- pareja_de(X,Z), hermanos_de(Z,Y).
+cunado_de(X,Y) :- pareja_de(Z,X), hermanos_de(Y,Z).
