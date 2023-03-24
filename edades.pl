@@ -68,7 +68,7 @@ persona_misma_edad(X, Y) :- edad(X, A), edad(Y, B), A = B.
 /******************************************/
 
 /*
-Definir parentesco existente en la Familia de Belén, según el árbol genealógico se debe cargar como hecho las relaciones de Padre y de esposo, luego crear las reglas para hermano, hijo tío, sobrino, primo, abuelo, nieto, y cuñado.
+Definir parentesco existente en la Familia de Belén, según el árbol genealógico se debe cargar como hecho las relaciones de Padre y de esposo, luego crear las reglas para hermano, hijo, tío, sobrino, primo, abuelo, nieto, y cuñado.
 */
 
 /*Ejecutar los siguientes objetivos:*/
@@ -88,21 +88,38 @@ Definir parentesco existente en la Familia de Belén, según el árbol genealóg
 */
 
 % Definición de hechos
+
+% Tomas y Pilar como padres
 padre_de(tomas, amalia).
 padre_de(tomas, ana).
 padre_de(tomas, oscar).
 madre_de(pilar, amalia).
 madre_de(pilar, ana).
 madre_de(pilar, oscar).
-padre_de(marcelo, esteban).
-padre_de(marcelo, martin).
-madre_de(amalia, esteban).
-madre_de(amalia, martin).
-padre_de(oscar, sara).
-padre_de(oscar, belen).
-madre_de(andrea, sara).
-madre_de(andrea, belen).
 
+% Parejas
 pareja_de(tomas, pilar).
 pareja_de(amalia, marcelo).
 pareja_de(oscar, andrea).
+
+% Definición de padres
+padres_de(marcelo, esteban).
+padres_de(marcelo, martin).
+padres_de(oscar, sara).
+padres_de(oscar, belen).
+
+% Definición de madres
+madres_de(amalia, esteban).
+madres_de(amalia, martin).
+madres_de(andrea, sara).
+madres_de(andrea, belen).
+
+% Definición de hermanos
+
+hermano_de(amalia, ana).
+hermano_de(amalia, oscar).
+hermano_de(oscar, amalia).
+hermano_de(oscar, ana).
+hermano_de(ana, amalia).
+hermano_de(ana, oscar).
+
