@@ -1,0 +1,9 @@
+es_sucesor(1, 2).
+es_sucesor(2, 3).
+es_sucesor(3, 4).
+es_sucesor(4, 5).
+es_sucesor(5, 6).
+es_sucesor(6, 7).
+es_sucesor(7, 8).
+es_sucesor(8, 9).
+es_sucesor(9, 10). 
