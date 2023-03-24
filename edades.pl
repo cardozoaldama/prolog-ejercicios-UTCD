@@ -53,6 +53,8 @@ edad(esteban, 17).
 edad(sara, 22).
 edad(belen, 5).
 
+/*Belén es bebé. Belén es niña. Esteban es adolecente. Tomás tiene 95 años.Cuántos años tiene Pilar. Quiénes tienen 5 años.*/
+
 bebe(X) :- edad(X, Y), Y =< 2.
 nino(X) :- edad(X, N), N >= 3, N =< 9.
 adolecente(X) :- edad(X, A), A >= 10, A =< 20.
@@ -63,8 +65,12 @@ persona_mayor(X, Y) :- edad(X, A), edad(Y, B), A > B.
 persona_menor(X, Y) :- edad(X, A), edad(Y, B), A < B.
 persona_misma_edad(X, Y) :- edad(X, A), edad(Y, B), A = B.
 
+/******************************************/
 
-/*Definir parentesco existente en la Familia de Belén, según el árbol genealógico se debe cargar como hecho las relaciones de Padre y de esposo, luego crear las reglas para hermano, hijo tío, sobrino, primo, abuelo, nieto, y cuñado.*/
+/*
+Definir parentesco existente en la Familia de Belén, según el árbol genealógico se debe cargar como hecho las relaciones de Padre y de esposo, luego crear las reglas para hermano, hijo tío, sobrino, primo, abuelo, nieto, y cuñado.
+*/
+
 /*Ejecutar los siguientes objetivos:*/
 /*
     ¿Quiénes son hermanos de Amalia?
@@ -79,12 +85,6 @@ persona_misma_edad(X, Y) :- edad(X, A), edad(Y, B), A = B.
     ¿Andrea es cuñado de Amalia?
     Listar primos
     Ana es abuela de Esteban
-*/
-
-/*Belén es bebé. Belén es niña. Esteban es adolecente. Tomás tiene 95 años.Cuántos años tiene Pilar. Quiénes tienen 5 años.*/
-
-/*
-Definir parentesco existente en la Familia de Belén, según el árbol genealógico se debe cargar como hecho las relaciones de Padre y de esposo, luego crear las reglas para hermano, hijo tío, sobrino, primo, abuelo, nieto, y cuñado.
 */
 
 % Definición de hechos
