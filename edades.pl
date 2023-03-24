@@ -99,46 +99,24 @@ pareja_de(tomas, pilar).
 pareja_de(amalia, marcelo).
 pareja_de(oscar, andrea).
 
-% Definición de reglas
-hermano_de(X, Y) :-
-    padre_de(P, X),
-    padre_de(P, Y),
-    madre_de(M, X),
-    madre_de(M, Y),
-    X \= Y.
+% Padres e hijos directos.
 
-hijo_de(X, Y) :-
-    padre_de(Y, X);
-    madre_de(Y, X).
+padres_de(pilar, amalia).
+padres_de(pilar, ana).
+padres_de(pilar, oscar).
+padres_de(tomas, amalia).
+padres_de(tomas, ana).
+padres_de(tomas, oscar).
+padres_de(amalia, martin).
+padres_de(amalia, esteban).
+padres_de(oscar, sara).
+padres_de(oscar, belen).
 
-tio_de(X, Y) :-
-    hermano_de(X, P),
-    padre_de(P, Y);
-    hermano_de(X, M),
-    madre_de(M, Y).
-
-sobrino_de(X, Y) :-
-    tio_de(Y, X).
-
-primo_de(X, Y) :-
-    padre_de(P1, X),
-    padre_de(P2, Y),
-    hermano_de(P1, P2);
-    madre_de(M1, X),
-    madre_de(M2, Y),
-    hermano_de(M1, M2).
-
-abuelo_de(X, Y) :-
-    padre_de(X, P),
-    padre_de(P, Y);
-    madre_de(X, M),
-    madre_de(M, Y).
-
-nieto_de(X, Y) :-
-    abuelo_de(Y, X).
-
-cunado_de(X, Y) :-
-    pareja_de(X, P),
-    hermano_de(P, Y);
-    pareja_de(Y, P),
-    hermano_de(P, X).
+hijo_de(X,Y) :- padres_de(Y,X).
+hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X\==Y.
+tio_de(X,Y) :- hermano_de(X,Z), padres_de(Z,Y).
+sobrino_de(X,Y) :- tio_de(Y,X).
+primo_de(X,Y) :- padres_de(Z,X), padres_de(W,Y), hermano_de(Z,W).
+abuelo_de(X,Y) :- padres_de(X,Z), padres_de(Z,Y).
+nieto_de(X,Y) :- abuelo_de(Y,X).
+cuñado_de(X,Y) :- (padres_de(Z,Y), hermano_de(X,Z)) ; (padres_de(Z,X), hermano_de(Y,Z)).
