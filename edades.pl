@@ -89,6 +89,20 @@ Definir parentesco existente en la Familia de Belén, según el árbol genealóg
 
 % Definición de hechos
 
+% Hombres
+hombre(tomas).
+hombre(marcelo).
+hombre(oscar).
+hombre(martin).
+hombre(esteban).
+
+% Mujeres
+mujer(pilar).
+mujer(amalia).
+mujer(ana).
+mujer(sara).
+mujer(belen).
+
 % Tomas y Pilar como padres
 padre_de(tomas, amalia).
 padre_de(tomas, ana).
