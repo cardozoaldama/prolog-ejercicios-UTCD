@@ -148,8 +148,8 @@ hijo_de(X,Y) :- padre_de(Y,X), hombre(X).
 hijo_de(X,Y) :- madre_de(Y,X), mujer(X).
 
 % Tío: Una persona es tío de otra si esa persona es el hermano de uno de los padres de la otra.
-tio_de(X,Y) :- hermano_de(X,Z), padre_de(Z,Y).
-tio_de(X,Y) :- hermano_de(X,Z), madre_de(Z,Y).
+tio_de(X,Y) :- hermano_de(X,Z), padres_de(Z,Y).
+tio_de(X,Y) :- hermano_de(X,Z), madres_de(Z,Y).
 
 % Sobrino: Una persona es sobrino de otra si esa persona es hijo de un hermano o hermana de esa otra persona.
 sobrino_de(X,Y) :- hijo_de(X,Z), hermano_de(Z,Y).
@@ -160,10 +160,10 @@ primo_de(X,Y) :- tio_de(Z,Y), hijo_de(X,Z).
 primo_de(X,Y) :- tia_de(Z,Y), hijo_de(X,Z).
 
 % Abuelo: Una persona es abuelo de otra si esa persona es el padre o madre de uno de los padres de la otra.
-abuelo_de(X,Y) :- padre_de(X,Z), padre_de(Z,Y).
-abuelo_de(X,Y) :- padre_de(X,Z), madre_de(Z,Y).
-abuelo_de(X,Y) :- madre_de(X,Z), padre_de(Z,Y).
-abuelo_de(X,Y) :- madre_de(X,Z), madre_de(Z,Y).
+abuelo_de(X,Y) :- padres_de(X,Z), padres_de(Z,Y).
+abuelo_de(X,Y) :- padres_de(X,Z), madres_de(Z,Y).
+abuelo_de(X,Y) :- madres_de(X,Z), padres_de(Z,Y).
+abuelo_de(X,Y) :- madres_de(X,Z), madres_de(Z,Y).
 
 % Nieto: Una persona es nieto de otra si esa persona es hijo de uno de los hijos de esa otra persona.
 nieto_de(X,Y) :- hijo_de(Z,Y), hijo_de(X,Z).
