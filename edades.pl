@@ -111,6 +111,10 @@ padres_de(amalia, martin).
 padres_de(amalia, esteban).
 padres_de(oscar, sara).
 padres_de(oscar, belen).
+padres_de(marcelo, martin).
+padres_de(marcelo, esteban).
+padres_de(andrea, sara).
+padres_de(andrea, belen).
 
 hijo_de(X,Y) :- padres_de(Y,X).
 hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X\==Y.
