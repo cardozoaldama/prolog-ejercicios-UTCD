@@ -94,34 +94,15 @@ padre_de(tomas, oscar).
 madre_de(pilar, amalia).
 madre_de(pilar, ana).
 madre_de(pilar, oscar).
+padre_de(marcelo, esteban).
+padre_de(marcelo, martin).
+madre_de(amalia, esteban).
+madre_de(amalia, martin).
+padre_de(oscar, sara).
+padre_de(oscar, belen).
+madre_de(andrea, sara).
+madre_de(andrea, belen).
 
 pareja_de(tomas, pilar).
 pareja_de(amalia, marcelo).
 pareja_de(oscar, andrea).
-
-% Padres e hijos directos.
-
-padres_de(amalia, martin).
-padres_de(amalia, esteban).
-padres_de(oscar, sara).
-padres_de(oscar, belen).
-padres_de(marcelo, martin).
-padres_de(marcelo, esteban).
-padres_de(andrea, sara).
-padres_de(andrea, belen).
-hermanos_de(amalia, oscar).
-hermanos_de(amalia, ana).
-hermanos_de(oscar, amalia).
-hermanos_de(oscar, ana).
-hermanos_de(ana, amalia).
-hermanos_de(ana, oscar).
-
-hijo_de(X,Y) :- padres_de(Y,X).
-hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X\==Y.
-tio_de(X,Y) :- hermano_de(X,Z), padres_de(Z,Y).
-sobrino_de(X,Y) :- tio_de(Y,X).
-primo_de(X,Y) :- padres_de(Z,X), padres_de(W,Y), hermano_de(Z,W).
-abuelo_de(X,Y) :- padres_de(X,Z), padres_de(Z,Y).
-nieto_de(X,Y) :- abuelo_de(Y,X).
-cunado_de(X,Y) :- pareja_de(X,Z), hermanos_de(Z,Y).
-cunado_de(X,Y) :- pareja_de(Z,X), hermanos_de(Y,Z).
