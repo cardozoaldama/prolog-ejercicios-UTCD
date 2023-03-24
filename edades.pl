@@ -83,6 +83,10 @@ persona_misma_edad(X, Y) :- edad(X, A), edad(Y, B), A = B.
 
 /*Belén es bebé. Belén es niña. Esteban es adolecente. Tomás tiene 95 años.Cuántos años tiene Pilar. Quiénes tienen 5 años.*/
 
+/*
+Definir parentesco existente en la Familia de Belén, según el árbol genealógico se debe cargar como hecho las relaciones de Padre y de esposo, luego crear las reglas para hermano, hijo tío, sobrino, primo, abuelo, nieto, y cuñado.
+*/
+
 % Definición de hechos
 padre_de(tomas, amalia).
 padre_de(tomas, ana).
@@ -94,9 +98,6 @@ madre_de(pilar, oscar).
 pareja_de(tomas, pilar).
 pareja_de(amalia, marcelo).
 pareja_de(oscar, andrea).
-
-padres_hijos(amalia, esteban).
-padres_hijos(amalia, esteban).
 
 % Definición de reglas
 hermano_de(X, Y) :-
