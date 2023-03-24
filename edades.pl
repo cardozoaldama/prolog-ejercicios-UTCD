@@ -119,4 +119,4 @@ sobrino_de(X,Y) :- tio_de(Y,X).
 primo_de(X,Y) :- padres_de(Z,X), padres_de(W,Y), hermano_de(Z,W).
 abuelo_de(X,Y) :- padres_de(X,Z), padres_de(Z,Y).
 nieto_de(X,Y) :- abuelo_de(Y,X).
-cuñado_de(X,Y) :- (padres_de(Z,Y), hermano_de(X,Z)) ; (padres_de(Z,X), hermano_de(Y,Z)).
+cunado_de(X,Y) :- (padres_de(Z,Y), hermano_de(X,Z)) ; (padres_de(Z,X), hermano_de(Y,Z)).
