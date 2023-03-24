@@ -74,7 +74,7 @@ Definir parentesco existente en la Familia de Belén, según el árbol genealóg
 /*Ejecutar los siguientes objetivos:*/
 /*
     ¿Quiénes son hermanos de Amalia?
-    ¿Quénes son hermanos de Sara?
+    ¿Quiénes son hermanos de Sara?
     ¿Quién es el padre de Esteban?
     ¿Quién es el padre de Andrea?
     ¿Quiénes son hijos de Marcelo?
@@ -123,3 +123,40 @@ hermano_de(oscar, ana).
 hermano_de(ana, amalia).
 hermano_de(ana, oscar).
 
+% DECLARACIÓN DE REGLAS
+
+% Hermano: Dos personas son hermanas si tienen los mismos padres.
+hermano_de(X,Y) :- padres_de(Z,X), padres_de(Z,Y), X \== Y.
+hermano_de(X,Y) :- madres_de(Z,X), madres_de(Z,Y), X \== Y.
+
+% Hijo: Una persona es hijo de otra si esa persona es el hijo varón o la hija mujer de esa otra persona.
+hijo_de(X,Y) :- padre_de(Y,X), hombre(X).
+hijo_de(X,Y) :- madre_de(Y,X), mujer(X).
+
+% Tío: Una persona es tío de otra si esa persona es el hermano de uno de los padres de la otra.
+tio_de(X,Y) :- hermano_de(X,Z), padre_de(Z,Y).
+tio_de(X,Y) :- hermano_de(X,Z), madre_de(Z,Y).
+
+% Sobrino: Una persona es sobrino de otra si esa persona es hijo de un hermano o hermana de esa otra persona.
+sobrino_de(X,Y) :- hijo_de(X,Z), hermano_de(Z,Y).
+sobrino_de(X,Y) :- hijo_de(X,Z), hermana_de(Z,Y).
+
+% Primo: Una persona es primo de otra si esa persona es hijo de un tío o tía de la otra.
+primo_de(X,Y) :- tio_de(Z,Y), hijo_de(X,Z).
+primo_de(X,Y) :- tia_de(Z,Y), hijo_de(X,Z).
+
+% Abuelo: Una persona es abuelo de otra si esa persona es el padre o madre de uno de los padres de la otra.
+abuelo_de(X,Y) :- padre_de(X,Z), padre_de(Z,Y).
+abuelo_de(X,Y) :- padre_de(X,Z), madre_de(Z,Y).
+abuelo_de(X,Y) :- madre_de(X,Z), padre_de(Z,Y).
+abuelo_de(X,Y) :- madre_de(X,Z), madre_de(Z,Y).
+
+% Nieto: Una persona es nieto de otra si esa persona es hijo de uno de los hijos de esa otra persona.
+nieto_de(X,Y) :- hijo_de(Z,Y), hijo_de(X,Z).
+nieto_de(X,Y) :- hijo_de(Z,Y), hija_de(X,Z).
+
+% Cuñado: Una persona es cuñado de otra si esa persona está casada con el hermano o hermana de la otra.
+cunado_de(X,Y) :- pareja_de(X,Z), hermano_de(Z,Y), hombre(X).
+cunado_de(X,Y) :- pareja_de(X,Z), hermana_de(Z,Y), hombre(X).
+cunado_de(X,Y) :- pareja_de(Z,X), hermano_de(Z,Y), hombre(X).
+cunado_de(X,Y) :- pareja_de(Z,X), hermana_de(Z,Y), hombre(X).
