@@ -109,4 +109,6 @@ madres(amalia, esteban).
 madres(andrea, sara).
 madres(andrea, belen).
 
-% Esposos
+% REGLAS
+
+hijo(X, Y) :- padres(Y, X).
