@@ -120,6 +120,7 @@ pareja(andrea, oscar).
 
 % REGLAS
 
+% HERMANOS
 % "X" es hermano/a de "Y" si el padre de X es "A" y el padre de Y es "A".
 % Los hermanos tienen que ser de los mismos padres, según esta regla.
 hermano(X, Y) :- 
@@ -127,14 +128,16 @@ padre(A, X) , padre(A, Y) , X \== Y ;
 madre(A, X) , madre(A, Y) ,
 X \== Y.
 
+% HIJOS
 % "X" es hijo de "Y"(Padres) si "Y" es padre de "X"(hijo) OR "Y" es madre de "X".
 % Regla y Aridad: hijo/2.
 % Regla y Conclusión: hijo(X, Y)
 % Regla y Condición: padre(Y, X) ; madre(Y, X).
 hijo(X, Y) :- padre(Y, X) ; madre(Y, X).
 
+% TÍOS
 % "X" es tío/a de "Y" si es que Y es hijo de alguien, que ese alguien es hermano de X.
-% Inclusive verificando si X es pareja de Z, que a su vez puede ser tío/a de "Y"
+% Inclusive verificando si X es pareja de Z, que a su vez puede ser tío/a de "Y".
 tio(X, Y) :-
 hijo(Y, A),
 hermano(X, A).
@@ -142,10 +145,12 @@ tio(X, Y) :-
 pareja(Z, X),
 tio(Z, Y).
 
+% SOBRINOS
 % "X" es sobrino/a de "Y" si Y es tío/a de X.
 sobrino(X, Y) :-
 tio(Y, X).
 
+% PRIMOS
 /*
 "X" es primo de "Y" si Y es sobrino del padre/madre de X y que X sea hijo a su vez de sus padres/madres...
 Que son a su vez tíos de Y.
@@ -154,15 +159,18 @@ primo(X, Y) :-
 sobrino(Y, A),
 hijo(X, A).
 
+% ABUELOS
 % "X" es abuelo de "Y" si X es padre de algunos, y que esos algunos sean padres de "Y".
 abuelo(X, Y) :-
 hijo(A, X), 
 hijo(Y, A).
 
+% NIETOS
 % "X" es nieto de "Y" si Y es el abuelo de X.
 nieto(X, Y) :-
 abuelo(Y, X).
 
+% CUÑADOS
 % "X" es cuñado de "Y" si Y tiene hermanos, que a su vez son pareja de "X".
 cunado(X, Y) :-
 hermano(Y, A),
