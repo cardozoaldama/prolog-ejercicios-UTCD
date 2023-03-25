@@ -138,3 +138,7 @@ hermano(X, A).
 tio(X, Y) :-
 pareja(Z, X),
 tio(Z, Y).
+
+% "X" es sobrino/a de "Y" si Y es tío/a de X.
+sobrino(X, Y) :-
+tio(Y, X).
