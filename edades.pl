@@ -91,24 +91,24 @@ Definir parentesco existente en la Familia de Belén, según el árbol genealóg
 
 % Padres
 
-padres(tomas, amalia).
-padres(tomas, ana).
-padres(tomas, oscar).
-padres(marcelo, martin).
-padres(marcelo, esteban).
-padres(oscar, sara).
-padres(oscar, belen).
+padre(tomas, amalia).
+padre(tomas, ana).
+padre(tomas, oscar).
+padre(marcelo, martin).
+padre(marcelo, esteban).
+padre(oscar, sara).
+padre(oscar, belen).
 
 % Madres
 
-madres(pilar, amalia).
-madres(pilar, ana).
-madres(pilar, oscar).
-madres(amalia, martin).
-madres(amalia, esteban).
-madres(andrea, sara).
-madres(andrea, belen).
+madre(pilar, amalia).
+madre(pilar, ana).
+madre(pilar, oscar).
+madre(amalia, martin).
+madre(amalia, esteban).
+madre(andrea, sara).
+madre(andrea, belen).
 
 % REGLAS
 
-hijo(X, Y) :- padres(Y, X).
+hijo(X, Y) :- padre(Y, X).
