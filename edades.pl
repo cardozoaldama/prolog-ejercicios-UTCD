@@ -162,3 +162,8 @@ hijo(Y, A).
 % "X" es nieto de "Y" si Y es el abuelo de X.
 nieto(X, Y) :-
 abuelo(Y, X).
+
+% "X" es cuñado de "Y" si Y tiene hermanos, que a su vez son pareja de "X".
+cunado(X, Y) :-
+hermano(Y, A),
+pareja(A, X).
