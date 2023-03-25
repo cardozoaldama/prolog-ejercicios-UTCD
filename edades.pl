@@ -142,3 +142,11 @@ tio(Z, Y).
 % "X" es sobrino/a de "Y" si Y es tío/a de X.
 sobrino(X, Y) :-
 tio(Y, X).
+
+/*
+"X" es primo de "Y" si Y es sobrino del padre/madre de X y que X sea hijo a su vez de sus padres/madres...
+Que son a su vez tíos de Y.
+*/
+primo(X, Y) :-
+sobrino(Y, A),
+hijo(X, A).
