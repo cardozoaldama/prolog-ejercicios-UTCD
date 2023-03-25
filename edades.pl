@@ -155,3 +155,7 @@ hijo(X, A).
 abuelo(X, Y) :-
 hijo(A, X), 
 hijo(Y, A).
+
+% "X" es nieto de "Y" si Y es el abuelo de X.
+nieto(X, Y) :-
+abuelo(Y, X).
