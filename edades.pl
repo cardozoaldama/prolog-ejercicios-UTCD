@@ -114,6 +114,9 @@ madre(andrea, belen).
 pareja(tomas, pilar).
 pareja(marcelo, amalia).
 pareja(oscar, andrea).
+pareja(pilar, tomas).
+pareja(amalia, marcelo).
+pareja(andrea, oscar).
 
 % REGLAS
 
