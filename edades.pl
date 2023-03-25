@@ -150,3 +150,8 @@ Que son a su vez tíos de Y.
 primo(X, Y) :-
 sobrino(Y, A),
 hijo(X, A).
+
+% "X" es abuelo de "Y" si X es padre de algunos, y que esos algunos sean padres de "Y".
+abuelo(X, Y) :-
+hijo(A, X), 
+hijo(Y, A).
