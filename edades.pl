@@ -109,6 +109,18 @@ madre(amalia, esteban).
 madre(andrea, sara).
 madre(andrea, belen).
 
+% Esposos
+
+esposo(tomas, pilar).
+esposo(marcelo, amalia).
+esposo(oscar, andrea).
+
+% Esposas
+
+esposa(pilar, tomas).
+esposa(amalia, marcelo).
+esposa(andrea, oscar).
+
 % REGLAS
 
 % "X" es hermano/a de "Y" si el padre de X es "A" y el padre de Y es "A".
