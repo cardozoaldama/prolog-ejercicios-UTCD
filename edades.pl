@@ -109,17 +109,11 @@ madre(amalia, esteban).
 madre(andrea, sara).
 madre(andrea, belen).
 
-% Esposos
+% PAREJAS: Esposos y Esposas
 
-esposo(tomas, pilar).
-esposo(marcelo, amalia).
-esposo(oscar, andrea).
-
-% Esposas
-
-esposa(pilar, tomas).
-esposa(amalia, marcelo).
-esposa(andrea, oscar).
+pareja(tomas, pilar).
+pareja(marcelo, amalia).
+pareja(oscar, andrea).
 
 % REGLAS
 
