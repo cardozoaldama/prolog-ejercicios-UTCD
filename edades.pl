@@ -111,6 +111,13 @@ madre(andrea, belen).
 
 % REGLAS
 
+% "X" es hermano/a de "Y" si el padre de X es "A" y el padre de Y es "A".
+% Los hermanos tienen que ser de los mismos padres, según esta regla.
+hermano(X, Y) :- 
+padre(A, X) , padre(A, Y) , X \== Y ;
+madre(A, X) , madre(A, Y) ,
+X \== Y.
+
 % "X" es hijo de "Y"(Padres) si "Y" es padre de "X"(hijo) OR "Y" es madre de "X".
 % Regla y Aridad: hijo/2.
 % Regla y Conclusión: hijo(X, Y)
