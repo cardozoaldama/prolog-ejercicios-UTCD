@@ -111,4 +111,8 @@ madre(andrea, belen).
 
 % REGLAS
 
-hijo(X, Y) :- padre(Y, X).
+% "X" es hijo de "Y"(Padres) si "Y" es padre de "X"(hijo) OR "Y" es madre de "X".
+% Regla y Aridad: hijo/2.
+% Regla y Conclusión: hijo(X, Y)
+% Regla y Condición: padre(Y, X) ; madre(Y, X).
+hijo(X, Y) :- padre(Y, X) ; madre(Y, X).
