@@ -139,11 +139,8 @@ hijo(X, Y) :- padre(Y, X) ; madre(Y, X).
 % "X" es tío/a de "Y" si es que Y es hijo de alguien, que ese alguien es hermano de X.
 % Inclusive verificando si X es pareja de Z, que a su vez puede ser tío/a de "Y".
 tio(X, Y) :-
-hijo(Y, A),
-hermano(X, A).
-tio(X, Y) :-
-pareja(Z, X),
-tio(Z, Y).
+hijo(Y, Z),
+hermano(Z, X).
 
 % SOBRINOS
 % "X" es sobrino/a de "Y" si Y es tío/a de X.
