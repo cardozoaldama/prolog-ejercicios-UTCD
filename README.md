@@ -38,4 +38,4 @@ Sin embargo, es necesario que puedas colocarlos en la carpeta a parte de la raí
 
 ## Versión
 
-- Actualmente el proyecto está en su versión 1.0.1 y está *stable*~.
+- Actualmente el proyecto está en su versión v1.0.2 y está *stable*~.
