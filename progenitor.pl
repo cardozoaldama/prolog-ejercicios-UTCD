@@ -4,6 +4,7 @@ matrimonio(juan, carmen).
 matrimonio(luis, isabel).
 matrimonio(rodrigo, laura).
 matrimonio(X, Y) :- matrimonio(Y, X).
+/*Hijos*/
 hijo(antonio, juan).
 hijo(antonio, rodrigo).
 hijo(antonio, marta).
